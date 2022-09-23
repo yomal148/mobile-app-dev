@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState); // calling the super
+        setContentView(R.layout.activity_main); // inflate the layout
     }
 
     public void toastMsg(String msg){
@@ -20,6 +21,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayToastMsg(View v) {
-        toastMsg("Hello how are you today, my name is Amal and my email is tharyan.a@northeastern.edu");
+        toastMsg("Hello, my name is Amal and my email is tharyan.a@northeastern.edu");
     }
 }
