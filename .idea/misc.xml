@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_launcher_at_2_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_clicky.xml" value="0.21331521739130435" />
+        <entry key="app/src/main/res/layout/activity_clicky_clicky.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2869308471679688" />
       </map>
     </option>
