@@ -3,6 +3,7 @@ package edu.northeastern.numad22fa_amaltharyan;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 
 public class AboutMeActivity extends AppCompatActivity {
@@ -19,6 +20,8 @@ public class AboutMeActivity extends AppCompatActivity {
 
         email = (EditText) findViewById(R.id.editTextTextEmailAddress); // get reference to email text box
         email.setText("tharyan.a@northeastern.edu"); // Setting text to email
+
+
     }
 
 }

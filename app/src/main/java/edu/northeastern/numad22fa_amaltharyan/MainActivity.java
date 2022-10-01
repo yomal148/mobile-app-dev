@@ -12,7 +12,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private Button aboutMe;
     private Button click;
-
+    private Button linkCollector;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); // calling the super
@@ -35,18 +35,33 @@ public class MainActivity extends AppCompatActivity {
                 gotoAboutMeActivity(view);
             }
         });
+
+        linkCollector = (Button) findViewById(R.id.link_collector); // get reference to link collector button
+        linkCollector.setBackgroundColor(Color.BLACK);
+
+        linkCollector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {gotoLinkCollectorActivity(view);}
+        });
+
     }
 
 
     // navigate to About me activity
     public void gotoAboutMeActivity(View v){
-        Intent intent = new Intent(MainActivity.this, AboutMeActivity.class);
+        Intent intent = new Intent(this, AboutMeActivity.class);
         startActivity(intent);
     }
 
-    // Utilize intent class to navigate to ClickyClicky class
+    // navigate to ClickyClicky activity
     public void gotoClickyClickyActivity(View v){
-        Intent intent = new Intent(MainActivity.this, ClickyClickyActivity.class);
+        Intent intent = new Intent(this, ClickyClickyActivity.class);
+        startActivity(intent);
+    }
+
+    // navigate to LinkCollector activity
+    public void gotoLinkCollectorActivity(View v){
+        Intent intent = new Intent(this, LinkCollectorActivity.class);
         startActivity(intent);
     }
 

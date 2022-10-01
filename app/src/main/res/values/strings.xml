@@ -9,4 +9,7 @@
     <string name="D">D</string>
     <string name="E">E</string>
     <string name="F">F</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="link_collector">Link Collector</string>
 </resources>

@@ -14,10 +14,16 @@
         android:theme="@style/Theme.NUMAD22Fa_AmalTharyan"
         tools:targetApi="31">
         <activity
+            android:name=".LinkCollectorActivity"
+            android:label="Recycler View"
+            android:exported="false" />
+        <activity
             android:name=".AboutMeActivity"
+            android:label="About Me"
             android:exported="false" />
         <activity
             android:name=".ClickyClickyActivity"
+            android:label="Clicky Clicky"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
