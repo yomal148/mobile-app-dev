@@ -9,22 +9,20 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class LinkCollectorActivity extends AppCompatActivity {
     RecyclerView linkRecyclerView;
-    List<Link> linkList;
+    ArrayList<Link> linkList;
     LinkAdapter adapter;
     FloatingActionButton floatingActionButton;
     final Context context = this;
@@ -51,18 +49,26 @@ public class LinkCollectorActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("User Input")
-                .setMessage("Please fill in the link url and name");
+                .setMessage("Please fill in the name and link url");
         LinearLayout layout= new LinearLayout(this); // creating layout for dialog box
         layout.setOrientation(LinearLayout.VERTICAL); // set vertical orientation for layout
         linkName = new EditText(this);
         link = new EditText(this);
+        linkName.setHint("Enter Name");
+        link.setHint("Enter Link");
         layout.addView(linkName);
         layout.addView(link);
         builder.setView(layout);
         builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                linkData();
+            public void onClick(DialogInterface dialogInterface, int which) {
+                String name = linkName.getText().toString();
+                String url = link.getText().toString();
+
+                Link link = new Link(name, url);
+                linkList.add(link);
+                adapter.notifyItemInserted(linkList.size()-1);
+
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -82,18 +88,8 @@ public class LinkCollectorActivity extends AppCompatActivity {
 
     }
 
-    public void linkData() {
-        String name = linkName.getText().toString();
-        String url = link.getText().toString();
 
-        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_LONG).show();
-        /**
-        Link link1 = new Link(name, url);
-        linkList.add(link1);
 
-        adapter.notifyDataSetChanged();
-         */
-    }
 
 
 }
