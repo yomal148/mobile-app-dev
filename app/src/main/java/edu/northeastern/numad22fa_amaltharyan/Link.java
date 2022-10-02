@@ -3,23 +3,23 @@ package edu.northeastern.numad22fa_amaltharyan;
 public class Link {
 
     private String name;
-    private String url;
+    private String link;
 
     /**
      * Construct a link object with name and link
      * @param name - name of the url
-     * @param url - the link provided by user
+     * @param link - the link provided by user
      */
-    public Link(String name, String url){
+    public Link(String name, String link){
         this.name = name;
-        this.url = url;
+        this.link = link;
     }
 
     public String getName(){
         return name;
     }
 
-    public String getUrl(){
-        return url;
+    public String getLink(){
+        return link;
     }
 }
