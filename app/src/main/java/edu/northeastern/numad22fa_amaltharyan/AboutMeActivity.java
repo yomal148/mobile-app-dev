@@ -3,7 +3,6 @@ package edu.northeastern.numad22fa_amaltharyan;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 
 public class AboutMeActivity extends AppCompatActivity {
