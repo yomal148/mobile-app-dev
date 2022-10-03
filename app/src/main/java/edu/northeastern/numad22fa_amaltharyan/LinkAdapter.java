@@ -18,10 +18,11 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkViewHolder> {
     private ItemClickListener ClickListener;
     private LayoutInflater Inflater;
 
-    public LinkAdapter(List<Link> links, Context context){
+    public LinkAdapter(Context context, List<Link> links){
         this.linkList = linkList;
-        this.context = context;
+        this.Inflater = LayoutInflater.from(context);
     }
+
     @NonNull
     @Override
     public LinkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

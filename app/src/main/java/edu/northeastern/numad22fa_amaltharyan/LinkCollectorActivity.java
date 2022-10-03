@@ -2,15 +2,13 @@ package edu.northeastern.numad22fa_amaltharyan;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
+
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -25,7 +23,6 @@ public class LinkCollectorActivity extends AppCompatActivity {
     ArrayList<Link> linkList;
     LinkAdapter adapter;
     FloatingActionButton floatingActionButton;
-    final Context context = this;
     EditText linkName;
     EditText link;
 
@@ -36,13 +33,10 @@ public class LinkCollectorActivity extends AppCompatActivity {
 
         // Instantiate the link list
         linkList = new ArrayList<>();
-
-
+        linkList.add(new Link("g", "google.com"));
         linkRecyclerView = findViewById(R.id.link_recycler_view);
-
-        //Add Linear layout orientation to recycler view
-        linkRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        linkRecyclerView.setHasFixedSize(true);
+        //linkRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new LinkAdapter(this, linkList);
         linkRecyclerView.setAdapter(adapter);
 
         floatingActionButton = findViewById(R.id.floatingActionButton);
@@ -65,8 +59,8 @@ public class LinkCollectorActivity extends AppCompatActivity {
                 String name = linkName.getText().toString();
                 String url = link.getText().toString();
 
-                Link link = new Link(name, url);
-                linkList.add(link);
+                linkList.add(new Link(name, url));
+
                 adapter.notifyItemInserted(linkList.size()-1);
 
             }
@@ -86,10 +80,8 @@ public class LinkCollectorActivity extends AppCompatActivity {
             }
         });
 
+
     }
-
-
-
 
 
 }
