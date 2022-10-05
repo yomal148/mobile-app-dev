@@ -14,4 +14,7 @@
     <string name="link_collector">Link Collector</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="find_primes">Find Primes</string>
+    <string name="terminate_search">Terminate Search</string>
+    <string name="prime_directive">Prime Directive</string>
 </resources>

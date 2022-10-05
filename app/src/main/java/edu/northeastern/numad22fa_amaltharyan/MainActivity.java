@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     private Button aboutMe;
     private Button click;
     private Button linkCollector;
+    private Button primeDirective;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); // calling the super
@@ -44,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {gotoLinkCollectorActivity(view);}
         });
 
+        primeDirective = (Button) findViewById(R.id.prime_directive);
+        primeDirective.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {gotoPrimeDirectiveActivity(view);}
+        });
+
     }
 
 
@@ -65,4 +73,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void gotoPrimeDirectiveActivity(View v){
+        Intent intent = new Intent(this, PrimeDirectiveActivity.class);
+        startActivity(intent);
+    }
 }
