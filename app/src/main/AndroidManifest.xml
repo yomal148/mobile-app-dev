@@ -16,7 +16,7 @@
         <activity
             android:name=".PrimeDirectiveActivity"
             android:exported="false"
-            android:label="Threads"/>
+            android:label="Threads" />
         <activity
             android:name=".LinkCollectorActivity"
             android:exported="false"
