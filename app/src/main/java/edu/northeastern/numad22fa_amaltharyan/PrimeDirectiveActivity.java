@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.os.Handler;
+import android.widget.Toast;
 
 public class PrimeDirectiveActivity extends AppCompatActivity {
     private Button findPrimes;
@@ -14,7 +15,8 @@ public class PrimeDirectiveActivity extends AppCompatActivity {
     private TextView text1;
     private TextView text2;
 
-    //myThread t = new myThread();
+    private boolean running = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,31 +29,36 @@ public class PrimeDirectiveActivity extends AppCompatActivity {
         text1 = findViewById(R.id.currentNumber);
         text2 = findViewById(R.id.currentNumber2);
 
+
+        final Thread th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!running) {
+                    for (int i = 3; ; i += 2) {
+                        final int finalI = i;
+                        textHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                text1.setText("Current number: " + finalI);
+                                if (isPrime(finalI)) {
+                                    text2.setText("Latest prime found: " + finalI);
+                                }
+                            }
+                        });
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+
+
         findPrimes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread th = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (int i = 3; ; i += 2) {
-                            final int finalI = i;
-                            textHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    text1.setText("Current number: " + finalI);
-                                    if (isPrime(finalI)){
-                                        text2.setText("Latest prime found: " + finalI);
-                                    }
-                                }
-                            });
-                            try {
-                                Thread.sleep(100);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                });
                 th.start();
             }
         });
@@ -59,7 +66,8 @@ public class PrimeDirectiveActivity extends AppCompatActivity {
         terminateSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                running = true;
+                Toast.makeText(PrimeDirectiveActivity.this, "Terminated", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -78,5 +86,6 @@ public class PrimeDirectiveActivity extends AppCompatActivity {
             }
             return true;
         }
+
 }
 
