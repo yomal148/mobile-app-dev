@@ -1,5 +1,6 @@
 package edu.northeastern.numad22fa_amaltharyan;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -17,7 +18,6 @@ public class PrimeDirectiveActivity extends AppCompatActivity {
     private TextView text1;
     private TextView text2;
     private Handler textHandler = new Handler();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,5 +117,11 @@ public class PrimeDirectiveActivity extends AppCompatActivity {
                 .show();
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        //outState.putInt
+    }
 }
 

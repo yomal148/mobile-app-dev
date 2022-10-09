@@ -16,11 +16,13 @@
         <activity
             android:name=".PrimeDirectiveActivity"
             android:exported="false"
-            android:label="Threads" />
+            android:label="Threads"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".LinkCollectorActivity"
             android:exported="false"
-            android:label="Recycler View" />
+            android:label="Recycler View"
+            />
         <activity
             android:name=".AboutMeActivity"
             android:exported="false"
