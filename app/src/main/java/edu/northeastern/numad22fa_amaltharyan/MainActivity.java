@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button click;
     private Button linkCollector;
     private Button primeDirective;
+    private Button location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {gotoPrimeDirectiveActivity(view);}
         });
 
+        location = (Button) findViewById(R.id.location); // get reference to location button
+        location.setBackgroundColor(Color.MAGENTA);
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoLocationActivity(view);
+            }
+        });
     }
 
 
@@ -73,8 +82,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // navigate to Prime Directive activity
     public void gotoPrimeDirectiveActivity(View v){
         Intent intent = new Intent(this, PrimeDirectiveActivity.class);
+        startActivity(intent);
+    }
+
+    // navigate to Location activity
+    public void gotoLocationActivity(View v){
+        Intent intent = new Intent(this, LocationActivity.class);
         startActivity(intent);
     }
 }

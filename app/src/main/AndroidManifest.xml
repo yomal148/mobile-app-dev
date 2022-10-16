@@ -14,15 +14,18 @@
         android:theme="@style/Theme.NUMAD22Fa_AmalTharyan"
         tools:targetApi="31">
         <activity
-            android:name=".PrimeDirectiveActivity"
+            android:name=".LocationActivity"
             android:exported="false"
-            android:label="Threads"
-            android:configChanges="orientation|screenSize"/>
+            android:label="Location Sensor"/>
+        <activity
+            android:name=".PrimeDirectiveActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:label="Threads" />
         <activity
             android:name=".LinkCollectorActivity"
             android:exported="false"
-            android:label="Recycler View"
-            />
+            android:label="Recycler View" />
         <activity
             android:name=".AboutMeActivity"
             android:exported="false"
@@ -40,6 +43,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
