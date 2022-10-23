@@ -36,6 +36,7 @@ import java.util.concurrent.TimeUnit;
 public class LocationActivity extends AppCompatActivity{
     private TextView locationText;
     private TextView distanceTravelled;
+    private Button resetDistance;
 
     private float distance;
 
@@ -71,6 +72,8 @@ public class LocationActivity extends AppCompatActivity{
                     builder.setMessage(R.string.locationPermissionRejected)
                             .setTitle(R.string.locationRejectedTitle);
                     builder.setNeutralButton(R.string.ok, (dialog, id) -> dialog.dismiss());
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
                 }
             });
 
@@ -83,7 +86,7 @@ public class LocationActivity extends AppCompatActivity{
         locationText = (TextView) findViewById(R.id.location_text);
 
         distanceTravelled = (TextView) findViewById(R.id.distance_travelled);
-        Button resetDistance = (Button) findViewById(R.id.btn_reset_distance);
+        resetDistance = (Button) findViewById(R.id.btn_reset_distance);
         resetDistance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,6 +107,8 @@ public class LocationActivity extends AppCompatActivity{
                     .setTitle(R.string.showReasonTitle);
             builder.setPositiveButton(R.string.requestPermission, (dialog, id) -> dialog.dismiss());
             builder.setNegativeButton(R.string.cancel, (dialog, id) -> dialog.dismiss());
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
         } else {
             requestPermissionLauncher.launch(new String[]{
                     Manifest.permission.ACCESS_FINE_LOCATION,
@@ -115,6 +120,7 @@ public class LocationActivity extends AppCompatActivity{
 
     @SuppressLint("MissingPermission")
     private void initializeFuseLocation() {
+        resetDistance.setVisibility(View.VISIBLE);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(LocationActivity.this);
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
 
@@ -145,7 +151,7 @@ public class LocationActivity extends AppCompatActivity{
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    locationText.setText("Current Location" + "\n\n" + "Latitude: " + latitude + "\n" + "Longitude: " + longitude);
+                    locationText.setText(getString(R.string.current_location, latitude, longitude));
                     locationText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f);
                 }
             });
@@ -156,12 +162,15 @@ public class LocationActivity extends AppCompatActivity{
         if(currentLocation == null || initialLocation ==null){
             distance = 0;
         }else{
-            distance += currentLocation.distanceTo(initialLocation);
+            if(initialLocation.getLatitude() != currentLocation.getLatitude() || initialLocation.getLongitude() != currentLocation.getLongitude()){
+                distance += currentLocation.distanceTo(initialLocation);
+            }
         }
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                distanceTravelled.setText("Total distance: " + distance + " meters");
+                distanceTravelled.setText(getString(R.string.totalDistance, distance));
+                distanceTravelled.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f);
             }
         });
     }
@@ -214,7 +223,6 @@ public class LocationActivity extends AppCompatActivity{
 
     @Override
     public void onBackPressed() {
-        Log.d("Location", "On back Pressed");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.back_pressed_alert)
                 .setTitle(R.string.alert);

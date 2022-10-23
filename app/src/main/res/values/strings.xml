@@ -30,4 +30,6 @@
     <string name="back_pressed_alert">You are about to loose the distance calculated. Do you want to go back?</string>
     <string name="yes">Yes</string>
     <string name="clear">Reset Distance</string>
+    <string name="totalDistance">Total distance: %1$f mtrs</string>
+    <string name="current_location">Current Location \n\nLatitude: %1$f  \nLongitude: %2$f</string>
 </resources>
