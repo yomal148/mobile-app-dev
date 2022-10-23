@@ -19,4 +19,15 @@
     <string name="prime_directive">Prime Directive</string>
     <string name="Location">Location</string>
     <string name="get_location">Current Location</string>
+    <string name="requestPermission">Request Permission</string>
+    <string name="cancel">Cancel</string>
+    <string name="showReasonTitle">Location Permission Required</string>
+    <string name="showReasonMessage">Allow location permission to get your current location.</string>
+    <string name="locationPermissionRejected">Location permission was not accepted. To view your current location activate permission from settings</string>
+    <string name="locationRejectedTitle">Location Permission Rejected</string>
+    <string name="ok">Ok</string>
+    <string name="alert">Alert</string>
+    <string name="back_pressed_alert">You are about to loose the distance calculated. Do you want to go back?</string>
+    <string name="yes">Yes</string>
+    <string name="clear">Reset Distance</string>
 </resources>
